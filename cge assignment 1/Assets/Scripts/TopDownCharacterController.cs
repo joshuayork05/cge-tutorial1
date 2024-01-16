@@ -23,6 +23,8 @@ public class TopDownCharacterController : MonoBehaviour
     #endregion
 
 
+    GameObject block;
+
     /// <summary>
     /// When the script first initialises this gets called, use this for grabbing componenets
     /// </summary>
@@ -85,6 +87,17 @@ public class TopDownCharacterController : MonoBehaviour
         {
             //Shoot (well debug for now)
             Debug.Log($"Shoot! {Time.time}", gameObject);
+        }
+        
+        if (Input.GetButtonDown("Fire2"))
+        {
+            //Shoot (well debug for now)
+            block.transform.parent = transform;
+        }
+        if (Input.GetButtonUp("Fire2"))
+        {
+            //Shoot (well debug for now)
+            block.transform.parent = null;
         }
     }
 }
