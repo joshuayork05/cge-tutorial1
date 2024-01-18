@@ -1,9 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.MPE;
 using UnityEngine;
 
 public class TopDownCharacterController : MonoBehaviour
 {
+    [SerializeField] GameObject m_projectilePreFab;
+    [SerializeField] Transform m_firepoint;
+    [SerializeField] float m_projectileSpeed;
+
+    [SerializeField] private float m_cooldownLength = 1f;
+    private float m_timer;
+
+    [SerializeField] private float m_maxAmmo = 5;
+    [SerializeField] private float m_ammo;
+
     #region Framework Stuff
     //Reference to attached animator
     private Animator animator;
@@ -40,7 +51,7 @@ public class TopDownCharacterController : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        
+        m_ammo = m_maxAmmo;
     }
 
     /// <summary>
@@ -50,7 +61,8 @@ public class TopDownCharacterController : MonoBehaviour
     {
         //Set the velocity to the direction they're moving in, multiplied
         //by the speed they're moving
-        rb.velocity = playerDirection * (playerSpeed * playerMaxSpeed) * Time.fixedDeltaTime;
+        rb.velocity = playerDirection.normalized * (playerSpeed * playerMaxSpeed) * Time.fixedDeltaTime;
+        m_timer -= Time.deltaTime;
     }
 
     /// <summary>
@@ -85,8 +97,7 @@ public class TopDownCharacterController : MonoBehaviour
         // Was the fire button pressed (mapped to Left mouse button or gamepad trigger)
         if (Input.GetButtonDown("Fire1"))
         {
-            //Shoot (well debug for now)
-            Debug.Log($"Shoot! {Time.time}", gameObject);
+            Fire();
         }
         
         if (Input.GetButtonDown("Fire2"))
@@ -100,4 +111,30 @@ public class TopDownCharacterController : MonoBehaviour
             block.transform.parent = null;
         }
     }
+
+    void Fire()
+    {
+        if (m_timer <= 0)
+        {
+            GameObject projectileToSpawn = Instantiate(m_projectilePreFab, transform.position, Quaternion.identity); //thing being spawned, location, rotation
+
+            //ensures the projectile fired has a consistent speed
+            projectileToSpawn.GetComponent<Rigidbody2D>().AddForce(playerDirection.normalized * m_projectileSpeed, ForceMode2D.Impulse);
+
+            m_ammo -= 1;
+            m_timer = m_cooldownLength;
+
+            if (m_ammo == 0)
+            {
+                m_timer += 3;
+                m_ammo = m_maxAmmo;
+            }
+        }
+        else
+        {
+            //used mainly for debugging but I doubt it will be used.
+            Debug.Log($"In cooldown!");
+        } 
+    }
+
 }
