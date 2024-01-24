@@ -8,6 +8,7 @@ public class TopDownCharacterController : MonoBehaviour
     [SerializeField] GameObject m_projectilePreFab;
     [SerializeField] Transform m_firepoint;
     [SerializeField] float m_projectileSpeed;
+    [SerializeField] ShieldSystem Sheild_functions;
 
     [SerializeField] private float m_cooldownLength = 1f;
     private float m_timer;
@@ -63,6 +64,14 @@ public class TopDownCharacterController : MonoBehaviour
         //by the speed they're moving
         rb.velocity = playerDirection.normalized * (playerSpeed * playerMaxSpeed) * Time.fixedDeltaTime;
         m_timer -= Time.deltaTime;
+
+        if (Sheild_functions.IsShieldEnabled())
+        {
+            if (Sheild_functions.GetShieldTime() <= 0)
+            {
+                Sheild_functions.EndShield();
+            }
+        }
     }
 
     /// <summary>

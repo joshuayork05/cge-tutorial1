@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
+    [SerializeField] ShieldSystem shield;
     private HealthBar healthBar;
     private float health = 100;
     
     public void UpdateHealth(bool increase, float change_amount)
     {
-        if (increase)
+        if (shield.IsShieldEnabled() == false)
         {
-            health += change_amount;
-        }
-        else
-        {
-            health -= change_amount;
+            if (increase)
+            {
+                health += change_amount;
+            }
+            else
+            {
+                health -= change_amount;
+            }
         }
 
         healthBar.UpdateDisplayedHealth();
