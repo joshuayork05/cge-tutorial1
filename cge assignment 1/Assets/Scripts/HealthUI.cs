@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
 
-public class HealthBar : MonoBehaviour
+public class HealthUI : MonoBehaviour
 {
     public HealthSystem healthSystem;
     public TMPro.TextMeshProUGUI Health;
@@ -15,9 +15,9 @@ public class HealthBar : MonoBehaviour
         Health.text = $"Health: {healthSystem.GetHealth()}";
     }
 
-    public void UpdateDisplayedHealth()
+    public void UpdateDisplayedHealth(float ui_health)
     {
-        Health.text = $"Health: {healthSystem.GetHealth()}";
+        Health.text = $"Health: {ui_health}";
     }
 
 }

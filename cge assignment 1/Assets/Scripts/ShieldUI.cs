@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UI;
 
-public class NewBehaviourScript : MonoBehaviour
+public class ShieldUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] ShieldSystem shieldSystem;
+    [SerializeField] TMPro.TextMeshProUGUI Shield;
+
+    private bool shieldTextActive = false;
+
+    public void UpdateShieldTimer(float time_left)
     {
-        
+        if (shieldSystem.IsShieldEnabled())
+        {
+            Shield.text = $"Shield Time: {time_left}";
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void updateShieldTextState()
     {
-        
+        shieldTextActive = !shieldTextActive;
     }
 }

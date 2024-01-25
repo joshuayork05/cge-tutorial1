@@ -5,7 +5,7 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour
 {
     [SerializeField] ShieldSystem shield;
-    private HealthBar healthBar;
+    [SerializeField] HealthUI healthBar;
     private float health = 100;
     
     public void UpdateHealth(bool increase, float change_amount)
@@ -22,7 +22,7 @@ public class HealthSystem : MonoBehaviour
             }
         }
 
-        healthBar.UpdateDisplayedHealth();
+        healthBar.UpdateDisplayedHealth(health);
 
     }
 
