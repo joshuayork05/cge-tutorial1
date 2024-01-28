@@ -10,7 +10,7 @@ public class ShieldSystem : MonoBehaviour
     [SerializeField] GameObject pf_shield;
     [SerializeField] ShieldUI shieldUI;
     private bool shield_enabled = false;
-    public TopDownCharacterController player_info;
+    public TopDownCharacterController player_info; 
     public GameObject shieldInstance;
 
     public void StartShieldTimer()
@@ -23,6 +23,8 @@ public class ShieldSystem : MonoBehaviour
     private void CreateShield()
     {
         shieldInstance = Instantiate(pf_shield, player_info.transform.position, Quaternion.identity);
+        shieldUI.updateShieldTextState();
+        shieldUI.ShieldTimerVisibility();
     }
 
     private void FixedUpdate()
@@ -48,6 +50,8 @@ public class ShieldSystem : MonoBehaviour
     {
         shield_enabled = false;
         Destroy(shieldInstance);
+        shieldUI.updateShieldTextState();
+        shieldUI.ShieldTimerVisibility();
     }
 
     public void Update()

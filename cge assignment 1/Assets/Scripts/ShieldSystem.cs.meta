@@ -3,7 +3,10 @@ guid: 10a7d2824d111e249914495519f32cd8
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - pf_shield: {fileID: 7091230420927254103, guid: 2f08334bedaaed6468acdad8875d3a3f, type: 3}
+  - shieldUI: {instanceID: 0}
+  - shieldInstance: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

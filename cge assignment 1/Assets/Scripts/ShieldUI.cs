@@ -11,6 +11,11 @@ public class ShieldUI : MonoBehaviour
 
     private bool shieldTextActive = false;
 
+    private void Start()
+    {
+        Shield.enabled = false;
+    }
+
     public void UpdateShieldTimer(float time_left)
     {
         if (shieldSystem.IsShieldEnabled())
@@ -22,5 +27,10 @@ public class ShieldUI : MonoBehaviour
     public void updateShieldTextState()
     {
         shieldTextActive = !shieldTextActive;
+    }
+
+    public void ShieldTimerVisibility()
+    {
+        Shield.enabled = shieldTextActive;
     }
 }

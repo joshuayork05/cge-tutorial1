@@ -9,12 +9,13 @@ public class TopDownCharacterController : MonoBehaviour
     [SerializeField] Transform m_firepoint;
     [SerializeField] float m_projectileSpeed;
     [SerializeField] ShieldSystem Sheild_functions;
-
+    [SerializeField] SpeedSystem speed_functions;
     [SerializeField] private float m_cooldownLength = 1f;
-    private float m_timer;
-
-    [SerializeField] private float m_maxAmmo = 5;
+    [SerializeField] private float m_maxAmmo = 10;
     [SerializeField] private float m_ammo;
+    [SerializeField] private float projectile_damage = 1;
+
+    private float m_timer;
 
     #region Framework Stuff
     //Reference to attached animator
@@ -26,12 +27,10 @@ public class TopDownCharacterController : MonoBehaviour
     //The direction the player is moving in
     private Vector2 playerDirection;
 
-    //The speed at which they're moving
-    private float playerSpeed = 1f;
-
     [Header("Movement parameters")]
     //The maximum speed the player can move
     [SerializeField] private float playerMaxSpeed = 100f;
+    [SerializeField] private float playerSpeed = 1f;
     #endregion
 
 
@@ -72,6 +71,14 @@ public class TopDownCharacterController : MonoBehaviour
                 Sheild_functions.EndShield();
             }
         }
+
+        if (speed_functions.IsSpeedEnabled())
+        {
+            if (speed_functions.GetSpeedTime() <= 0)
+            {
+                speed_functions.EndSpeedTimer();
+            }
+        }
     }
 
     /// <summary>
@@ -108,7 +115,7 @@ public class TopDownCharacterController : MonoBehaviour
         {
             Fire();
         }
-        
+        /*
         if (Input.GetButtonDown("Fire2"))
         {
             //Shoot (well debug for now)
@@ -118,7 +125,7 @@ public class TopDownCharacterController : MonoBehaviour
         {
             //Shoot (well debug for now)
             block.transform.parent = null;
-        }
+        }*/
     }
 
     void Fire()
@@ -146,4 +153,20 @@ public class TopDownCharacterController : MonoBehaviour
         } 
     }
 
+    public void UpdatePlayerSpeed(float speed)
+    {
+        playerMaxSpeed = speed;
+    }
+
+    public void UpdateFireRate(float amount)
+    {
+        m_cooldownLength -= amount;
+    }
+
+    public void updateProjectileDamage(float amount)
+    {
+        Debug.Log($"Current Damage Output: {projectile_damage}");
+        projectile_damage += amount;
+        Debug.Log($"Current Damage Output: {projectile_damage}");
+    }
 }
