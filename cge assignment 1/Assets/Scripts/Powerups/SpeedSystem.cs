@@ -40,6 +40,6 @@ public class SpeedSystem : MonoBehaviour
     {
         speed_enabled = false;
         SpeedTimer = 0;
-        Player.UpdatePlayerSpeed(200);
+        Player.UpdatePlayerSpeed(1);
     }
 }

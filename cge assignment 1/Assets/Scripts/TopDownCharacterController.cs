@@ -161,7 +161,7 @@ public class TopDownCharacterController : MonoBehaviour
 
     public void UpdatePlayerSpeed(float speed)
     {
-        playerMaxSpeed = speed;
+        playerSpeed = speed;
     }
 
     public void UpdateFireRate(float amount)

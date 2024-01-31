@@ -95,8 +95,12 @@ public class MazeMaster : MonoBehaviour
         phase1 = true;
         phase2 = false;
         phase3 = false;
+
         UpdateExitValues();
+
+        player_info.UpdatePlayerSpeed(0f);
         player_info.transform.position = mazeStart;
+        player_info.UpdatePlayerSpeed(1f);
     }
 
     private void EndOfMaze()
