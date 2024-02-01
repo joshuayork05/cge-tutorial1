@@ -3602,6 +3602,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &903517644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 903517645}
+  m_Layer: 6
+  m_Name: Firepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &903517645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903517644}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.2, y: -0.49, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1861326226}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &915591872
 GameObject:
   m_ObjectHideFlags: 0
@@ -13686,7 +13717,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158651660}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -14628,6 +14659,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1861326226}
   - component: {fileID: 1861326227}
+  - component: {fileID: 1861326234}
   - component: {fileID: 1861326229}
   - component: {fileID: 1861326232}
   - component: {fileID: 1861326231}
@@ -14653,6 +14685,7 @@ Transform:
   m_Children:
   - {fileID: 519420032}
   - {fileID: 896897815}
+  - {fileID: 903517645}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14668,15 +14701,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a4cff1c0df7fc4b9c119c42273b2cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_projectilePreFab: {fileID: 8308945627681937133, guid: fbf6e1d2030e2794ba438d55711f4d01, type: 3}
-  m_firepoint: {fileID: 0}
-  m_projectileSpeed: 10
   Sheild_functions: {fileID: 1214242981}
   speed_functions: {fileID: 995599942}
-  m_cooldownLength: 1
-  m_maxAmmo: 10
-  m_ammo: 0
-  projectile_damage: 5
   playerMaxSpeed: 200
   playerSpeed: 200
 --- !u!50 &1861326229
@@ -14824,6 +14850,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &1861326234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861326223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc697f8602fe37449efac48de124780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1861326227}
+  projectilePreFab: {fileID: 8308945627681937133, guid: fbf6e1d2030e2794ba438d55711f4d01, type: 3}
+  firepoint: {fileID: 903517645}
+  projectile_speed: 5
+  projectile_damage: 1
+  cooldown_length: 1
+  max_ammo: 10
+  ammo: 0
 --- !u!4 &2099216597 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 661375462238628695, guid: 3721f6021d90e26488819adb402763b9, type: 3}

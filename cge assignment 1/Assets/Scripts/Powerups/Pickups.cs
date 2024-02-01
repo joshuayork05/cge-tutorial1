@@ -8,6 +8,7 @@ public class Pickups : MonoBehaviour
 
     [SerializeField] private ShieldSystem shieldSystem;
     [SerializeField] private HealthSystem healthSystem;
+    [SerializeField] private Weapons weapons;
     [SerializeField] private float HealthBoostAmount;
     [SerializeField] private SpeedSystem speedSystem;
     [SerializeField] private TopDownCharacterController player;
@@ -30,11 +31,11 @@ public class Pickups : MonoBehaviour
         }
         else if (pickup.name == "FireRate_Pickup")
         {
-            player.UpdateFireRate(FireRateChange);
+            weapons.UpdateFireRate(FireRateChange);
         }
         else if (pickup.name == "DamageBoost_Pickup")
         {
-            player.updateProjectileDamage(DamageBoostAmount);
+            weapons.updateProjectileDamage(DamageBoostAmount);
         }
 
         if (collision.CompareTag("Player"))
