@@ -12,6 +12,7 @@ public class Weapons : MonoBehaviour
     [SerializeField] private float cooldown_length = 1f;
     [SerializeField] private float max_ammo = 10;
     [SerializeField] private float ammo;
+    private float reload_time = 2;
 
     private float timer;
 
@@ -23,6 +24,7 @@ public class Weapons : MonoBehaviour
 
     private void Start()
     {
+        RapidFireWeapon();
         ammo = max_ammo;
     }
 
@@ -72,7 +74,7 @@ public class Weapons : MonoBehaviour
             if (ammo == 0)
             {
                 Debug.Log("Reloading");
-                timer += 3;
+                timer += reload_time;
                 ammo = max_ammo;
             }
         }
@@ -95,6 +97,35 @@ public class Weapons : MonoBehaviour
         Debug.Log($"Current Damage Output: {projectile_damage}");
     }
 
+    private void BasicWeapon()
+    {
+        ammo = 15;
+        max_ammo = 15;
+        projectile_damage = 10;
+        projectile_speed = 8;
+        cooldown_length = 0.8f;
+        reload_time = 2f;
+    }
+
+    private void RapidFireWeapon()
+    {
+        ammo = 30;
+        max_ammo = 30;
+        projectile_damage = 8;
+        projectile_speed = 8;
+        cooldown_length = 0.1f;
+        reload_time = 5f;
+    }
+
+    private void SniperWeapon()
+    {
+        ammo = 5;
+        max_ammo = 5;
+        projectile_damage = 25;
+        projectile_speed = 15;
+        cooldown_length = 1.5f;
+        reload_time = 2.5f;
+    }
 
 
 }
