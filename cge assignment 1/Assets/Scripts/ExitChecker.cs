@@ -9,8 +9,9 @@ public class ExitChecker : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        mazeMaster.StoreExitNum(exit_num);
+        if (collision.CompareTag("Player"))
+        {
+            mazeMaster.StoreExitNum(exit_num);
+        }
     }
-
-
 }

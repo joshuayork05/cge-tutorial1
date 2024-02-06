@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Weapons : MonoBehaviour
@@ -12,6 +14,7 @@ public class Weapons : MonoBehaviour
     [SerializeField] private float cooldown_length = 1f;
     [SerializeField] private float max_ammo = 10;
     [SerializeField] private float ammo;
+    [SerializeField] private bool In_menu;
     private float reload_time = 2;
 
     private float timer;
@@ -97,7 +100,12 @@ public class Weapons : MonoBehaviour
         Debug.Log($"Current Damage Output: {projectile_damage}");
     }
 
-    private void BasicWeapon()
+    public float GetProjectileDamage()
+    {
+        return projectile_damage;
+    }
+
+    public void BasicWeapon()
     {
         ammo = 15;
         max_ammo = 15;
@@ -107,7 +115,7 @@ public class Weapons : MonoBehaviour
         reload_time = 2f;
     }
 
-    private void RapidFireWeapon()
+    public void RapidFireWeapon()
     {
         ammo = 30;
         max_ammo = 30;
@@ -117,7 +125,7 @@ public class Weapons : MonoBehaviour
         reload_time = 5f;
     }
 
-    private void SniperWeapon()
+    public void SniperWeapon()
     {
         ammo = 5;
         max_ammo = 5;

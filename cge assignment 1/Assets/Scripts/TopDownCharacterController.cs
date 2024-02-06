@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.MPE;
 using UnityEngine;
 
@@ -7,7 +8,6 @@ public class TopDownCharacterController : MonoBehaviour
 {
     [SerializeField] ShieldSystem Sheild_functions;
     [SerializeField] SpeedSystem speed_functions;
-
     #region Framework Stuff
     //Reference to attached animator
     private Animator animator;
@@ -30,19 +30,13 @@ public class TopDownCharacterController : MonoBehaviour
     /// <summary>
     /// When the script first initialises this gets called, use this for grabbing componenets
     /// </summary>
+    /// 
+
     private void Awake()
     {
         //Get the attached components so we can use them later
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-    }
-
-    /// <summary>
-    /// Called after Awake(), and is used to initialize variables e.g. set values on the player
-    /// </summary>
-    private void Start()
-    {
-
     }
 
     /// <summary>

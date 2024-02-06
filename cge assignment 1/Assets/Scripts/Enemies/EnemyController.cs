@@ -2,53 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class NewBehaviourScript : MonoBehaviour
 {
-    public Transform player;
-    public float enemy_speed;
-    public float stopping_distance;
+    [SerializeField] private Weapons weapon;
+    [SerializeField] private float health;
+    [SerializeField] private float maxHealth;
 
-    enum EnemyStates
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Idle,
-        MoveToPlayer,
-        Attack
-    }
-
-    EnemyStates enemy_states;
-
-
-
-    void Start()
-    {
-        //this gets the player's position without having to get drag the player in
-        player = FindObjectOfType<TopDownCharacterController>().transform;
-        enemy_states = EnemyStates.Idle;
-    }
-
-    void Update()
-    {
-        if (enemy_states == EnemyStates.MoveToPlayer)
+        if (collision.CompareTag("PlayerProjectiles")) //compare tag suddenly not accepted
         {
-            MoveTowardsPlayer();
+            Debug.Log(health);
+            health -= weapon.GetProjectileDamage();
+            Debug.Log(health);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        enemy_states = EnemyStates.MoveToPlayer;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        enemy_states = EnemyStates.Idle;
-    }
-
-    private void MoveTowardsPlayer()
-    {
-        if (Vector2.Distance(transform.position, player.position) >= stopping_distance)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, enemy_speed * Time.deltaTime);
-        }
-    }
 }
