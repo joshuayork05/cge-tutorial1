@@ -5,9 +5,6 @@ using UnityEngine;
 public class MeleeEnemyController : MonoBehaviour
 {
     [SerializeField] HealthSystem PlayerHealth;
-    [SerializeField] private Weapons weapon;
-    [SerializeField] private float health;
-    [SerializeField] private float maxHealth;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

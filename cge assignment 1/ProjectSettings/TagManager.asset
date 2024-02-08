@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MovingObstcaleWaypoint
   - PlayerProjectiles
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX

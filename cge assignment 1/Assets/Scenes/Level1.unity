@@ -242,7 +242,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &53723678
 Transform:
   m_ObjectHideFlags: 0
@@ -3383,7 +3383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &733632750
 Transform:
   m_ObjectHideFlags: 0
@@ -3509,8 +3509,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 1861326234}
-  health: 0
-  maxHealth: 0
+  health: 100
+  maxHealth: 100
 --- !u!58 &733632754
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3557,6 +3557,8 @@ GameObject:
   - component: {fileID: 773953393}
   - component: {fileID: 773953392}
   - component: {fileID: 773953394}
+  - component: {fileID: 773953395}
+  - component: {fileID: 773953396}
   m_Layer: 0
   m_Name: SmarterEnemy
   m_TagString: Untagged
@@ -3574,11 +3576,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 5
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -3593,12 +3595,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773953391}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.3736649, y: 0.0087451935, z: -0.14270735}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 733632750}
+  - {fileID: 1207718764}
   m_Father: {fileID: 13852870}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3615,6 +3618,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1861326226}
+--- !u!114 &773953395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773953391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92a3219c7376da84192b8d47ce23f919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pf_projectile: {fileID: 1950839920520493953, guid: dee53a856287a6e46882d17ae584aa80, type: 3}
+  firepoint: {fileID: 1207718764}
+  target: {fileID: 1861326226}
+  cooldown: 1
+  attack_timer: 0
+  projectile_speed: 30
+  projectile_damage: 50
+--- !u!50 &773953396
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773953391}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &776929388
 GameObject:
   m_ObjectHideFlags: 0
@@ -14445,6 +14494,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 661375462238628695, guid: 3721f6021d90e26488819adb402763b9, type: 3}
   m_PrefabInstance: {fileID: 855116079}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1207718763
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1207718764}
+  m_Layer: 0
+  m_Name: Firepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1207718764
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207718763}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.09, y: 0, z: 0.69}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 773953393}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1214242978
 GameObject:
   m_ObjectHideFlags: 0
@@ -14681,7 +14761,9 @@ GameObject:
   - component: {fileID: 1293961200}
   - component: {fileID: 1293961203}
   - component: {fileID: 1293961202}
+  - component: {fileID: 1293961204}
   - component: {fileID: 1293961201}
+  - component: {fileID: 1293961205}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Untagged
@@ -14717,9 +14799,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHealth: {fileID: 1343984194}
-  weapon: {fileID: 1861326234}
-  health: 0
-  maxHealth: 0
 --- !u!61 &1293961202
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14817,6 +14896,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &1293961204
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293961199}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5000001
+--- !u!114 &1293961205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293961199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751f260fa32236d41b7be9f362c83683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 1861326234}
+  health: 0
+  maxHealth: 0
 --- !u!1 &1343984191
 GameObject:
   m_ObjectHideFlags: 0
@@ -15336,6 +15465,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sheild_functions: {fileID: 1214242981}
   speed_functions: {fileID: 995599942}
+  healthSystem: {fileID: 1343984194}
+  enemyAttack: {fileID: 773953395}
   playerMaxSpeed: 200
   playerSpeed: 200
 --- !u!50 &1861326229

@@ -8,15 +8,21 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField] private float health;
     [SerializeField] private float maxHealth;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("OW");
-
         if (collision.gameObject.CompareTag("PlayerProjectiles"))
         {
-            Debug.Log(health);
+            Destroy(collision.gameObject);
             health -= weapon.GetProjectileDamage();
-            Debug.Log(health);
+            CheckHealth();
+        }
+    }
+
+    private void CheckHealth()
+    {
+        if (health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

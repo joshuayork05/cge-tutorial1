@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using Unity.VisualScripting;
 using UnityEditor.MPE;
 using UnityEngine;
@@ -8,7 +9,9 @@ public class TopDownCharacterController : MonoBehaviour
 {
     [SerializeField] ShieldSystem Sheild_functions;
     [SerializeField] SpeedSystem speed_functions;
-    
+    [SerializeField] HealthSystem healthSystem;
+    [SerializeField] EnemyAttack enemyAttack;
+
     #region Framework Stuff
     //Reference to attached animator
     private Animator animator;
@@ -100,6 +103,7 @@ public class TopDownCharacterController : MonoBehaviour
             //Update the animator too, and return
             animator.SetFloat("Speed", 0);
         }
+
     }
 
     public void UpdatePlayerSpeed(float speed)
@@ -116,4 +120,21 @@ public class TopDownCharacterController : MonoBehaviour
     {
         return playerDirection;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("EnemyProjectile"))
+        {
+            Destroy(collision.gameObject);
+            healthSystem.UpdateHealth(false,enemyAttack.GetProjectileDamage());
+
+            if (healthSystem.IsPlayerAlive() == false)
+            {
+                Vector3 respawn = new Vector3(8, 7, 0);
+
+                transform.position = respawn;
+            }
+        }
+    }
+
 }
