@@ -8,6 +8,7 @@ public class TopDownCharacterController : MonoBehaviour
 {
     [SerializeField] ShieldSystem Sheild_functions;
     [SerializeField] SpeedSystem speed_functions;
+    
     #region Framework Stuff
     //Reference to attached animator
     private Animator animator;

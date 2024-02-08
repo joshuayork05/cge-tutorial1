@@ -14,9 +14,13 @@ public class Pickups : MonoBehaviour
     [SerializeField] private TopDownCharacterController player;
     [SerializeField] private float FireRateChange;
     [SerializeField] private float DamageBoostAmount;
+    [SerializeField] ParticleSystem pickupEffect;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        pickupEffect.Play();
+
         if (pickup.name == "Shield_pickup")
         {
             shieldSystem.StartShieldTimer();
