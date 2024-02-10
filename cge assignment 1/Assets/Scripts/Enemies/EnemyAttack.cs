@@ -13,25 +13,35 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] float projectile_speed;
     [SerializeField] float projectile_damage;
 
+    public string EnemyState;
+
     private void Update()
     {
-        attack_timer -= Time.deltaTime;
-
-        if (attack_timer <= 0f)
+        if (EnemyState == "Attack")
         {
-            Vector3 direction = target.transform.position - transform.position;
-            GameObject projectileToSpawn = Instantiate(pf_projectile, firepoint.position, Quaternion.identity);
+            attack_timer -= Time.deltaTime;
 
-            projectileToSpawn.GetComponent<Rigidbody2D>().AddForce(new Vector2(direction.x, direction.y).normalized * projectile_speed, ForceMode2D.Impulse);
+            if (attack_timer <= 0f)
+            {
+                Vector3 direction = target.transform.position - transform.position;
+                GameObject projectileToSpawn = Instantiate(pf_projectile, firepoint.position, Quaternion.identity);
+
+                projectileToSpawn.GetComponent<Rigidbody2D>().AddForce(new Vector2(direction.x, direction.y).normalized * projectile_speed, ForceMode2D.Impulse);
 
 
-            attack_timer = cooldown;
+                attack_timer = cooldown;
+            }
         }
     }
 
     public float GetProjectileDamage()
     {
         return projectile_damage;
+    }
+
+    public void UpdateAttackState(string state)
+    {
+        EnemyState = state;
     }
 
 }

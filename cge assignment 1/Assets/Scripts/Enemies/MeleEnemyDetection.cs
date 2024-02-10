@@ -1,15 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI; //navmesh class
+using UnityEngine.AI;
 
-public class SimpleNavmeshFollow : MonoBehaviour
+public class EnemyDetection : MonoBehaviour
 {
-    [SerializeField] private EnemyAttack attack;
-
     public Transform target;
     NavMeshAgent agent;
-
 
     enum enemyStates
     {
@@ -18,8 +15,6 @@ public class SimpleNavmeshFollow : MonoBehaviour
     };
 
     enemyStates CurrentState;
-
-
 
     void Start()
     {
@@ -40,7 +35,6 @@ public class SimpleNavmeshFollow : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             CurrentState = enemyStates.Attack;
-            attack.UpdateAttackState("Attack");
         }
     }
 
@@ -49,7 +43,6 @@ public class SimpleNavmeshFollow : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             CurrentState = enemyStates.Idle;
-            attack.UpdateAttackState("Idle");
         }
     }
 }
