@@ -24,6 +24,9 @@ public class EnemyDetection : MonoBehaviour
 
     void Update()
     {
+        //locks the rotation of the enemy
+        transform.rotation = Quaternion.identity;
+
         if (CurrentState == enemyStates.Attack)
         {
             agent.SetDestination(target.position);
