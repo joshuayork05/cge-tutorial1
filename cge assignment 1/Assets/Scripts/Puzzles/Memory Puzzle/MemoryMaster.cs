@@ -7,17 +7,20 @@ using UnityEngine;
 public class MemoryMaster : MonoBehaviour
 {
     [SerializeField] TriggerMemoryPuzzle triggerPuzzle;
+    [SerializeField] IndicatorManager indicatorManager;
 
     private bool phase1;
     private bool phase2;
     private bool phase3;
+
+    private int current_value;
 
     //creating the arrays
     private int[] current_solution;
     private int[] player_solution;
 
     private int player_length = 0;
-    private int correct_count = 1;
+    private int correct_count = 0;
 
     private void Awake()
     {
@@ -37,15 +40,15 @@ public class MemoryMaster : MonoBehaviour
     public void GetObjectNumber(int object_number)
     { 
         player_solution[player_length] = object_number;
-        CompareCurrentInput(player_length);
+        CompareCurrentInput(player_length, false);
 
         player_length++;
         CheckPlayerLength();
     }
 
-    private int GenerateObjectNum()
+    private void GenerateObjectNum()
     {
-        return UnityEngine.Random.Range(1, 6);
+        current_value = UnityEngine.Random.Range(1, 6);
     }
 
     private void PuzzleSolution(int phase_size)
@@ -55,8 +58,13 @@ public class MemoryMaster : MonoBehaviour
 
         while (count < phase_size)
         {
-            current_solution[index] = GenerateObjectNum();
+            Invoke("GenerateObjectNum", 1.5f);
+            Debug.Log($"--------------{current_value}--------------");
+            current_solution[index] = current_value;
             Debug.Log(current_solution[index]);
+
+            indicatorManager.PlayObject(current_solution[index]);
+
             index++;
             count++;
         }
@@ -82,12 +90,16 @@ public class MemoryMaster : MonoBehaviour
         }
     }
 
-    private void CompareCurrentInput(int index)
+    private void CompareCurrentInput(int index, bool counter)
     {
         if (player_solution[index] == current_solution[index])
         {
             Debug.Log("Match");
-            correct_count++;
+
+            if (counter)
+            {
+                correct_count++;
+            }
         }
         else
         {
@@ -105,7 +117,7 @@ public class MemoryMaster : MonoBehaviour
         {
             while (count < 3)
             {
-                CompareCurrentInput(index);
+                CompareCurrentInput(index, true);
                 count++;
                 index++;
             }
@@ -115,7 +127,7 @@ public class MemoryMaster : MonoBehaviour
         {
             while (count < 5)
             {
-                CompareCurrentInput(index);
+                CompareCurrentInput(index, true);
                 count++;
                 index++;
             }
@@ -125,7 +137,7 @@ public class MemoryMaster : MonoBehaviour
         {
             while (count < 7)
             {
-                CompareCurrentInput(index);
+                CompareCurrentInput(index, true);
                 count++;
                 index++;
             }
@@ -139,6 +151,8 @@ public class MemoryMaster : MonoBehaviour
 
     private void CheckSolution(int phase_requirement, int current_phase)
     {
+        Debug.Log($"Correct count: {correct_count} - Phase requirement: {phase_requirement} - Current phase: {current_phase}"); 
+
         if (correct_count == phase_requirement)
         {
             if (current_phase == 1)
