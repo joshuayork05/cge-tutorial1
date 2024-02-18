@@ -8,12 +8,12 @@ public class MemoryMaster : MonoBehaviour
 {
     [SerializeField] TriggerMemoryPuzzle triggerPuzzle;
     [SerializeField] IndicatorManager indicatorManager;
+    [SerializeField] AudioSource incorrect;
+    [SerializeField] AudioSource correct;
 
     private bool phase1;
     private bool phase2;
     private bool phase3;
-
-    private int current_value;
 
     //creating the arrays
     private int[] current_solution;
@@ -32,42 +32,54 @@ public class MemoryMaster : MonoBehaviour
     public void ActivatePuzzle()
     {
         phase1 = true;
+        player_length = 0;
         triggerPuzzle.UpdateState();
-        PuzzleSolution(3);
+        StartCoroutine(PuzzleSolution(3));
     }
 
 
     public void GetObjectNumber(int object_number)
     { 
         player_solution[player_length] = object_number;
+
+        //Debug.Log($"obj: {object_number}, player: {player_solution[0]}, Solution: {current_solution[0]}");
+
+        indicatorManager.PlayObject(object_number);
+
         CompareCurrentInput(player_length, false);
 
         player_length++;
         CheckPlayerLength();
     }
 
-    private void GenerateObjectNum()
+    private int GenerateObjectNum()
     {
-        current_value = UnityEngine.Random.Range(1, 6);
+        return UnityEngine.Random.Range(1, 6);
     }
 
-    private void PuzzleSolution(int phase_size)
+    private IEnumerator PuzzleSolution(int phase_size)
     {
         int index = 0;
         int count = 0;
 
         while (count < phase_size)
         {
-            Invoke("GenerateObjectNum", 1.5f);
-            Debug.Log($"--------------{current_value}--------------");
-            current_solution[index] = current_value;
+            current_solution[index] = GenerateObjectNum();
             Debug.Log(current_solution[index]);
 
             indicatorManager.PlayObject(current_solution[index]);
 
+            yield return new WaitForSeconds(2);
+
             index++;
             count++;
         }
+
+        /*
+        for (int i = 0; i <= current_solution.Length - 1; i++)
+        {
+            Debug.Log($"Solution: {current_solution[i]}");
+        }*/
     }
 
     private void CheckPlayerLength()
@@ -86,14 +98,18 @@ public class MemoryMaster : MonoBehaviour
         }
         else
         {
-            Debug.Log("Player length isn't correct");
+            //Debug.Log("Player length isn't correct");
         }
     }
 
     private void CompareCurrentInput(int index, bool counter)
     {
+
+        //Debug.Log($"\nPlayer: {player_solution[index]} - Solution: {current_solution[index]}");
+
         if (player_solution[index] == current_solution[index])
         {
+            //correct.Play();
             Debug.Log("Match");
 
             if (counter)
@@ -103,6 +119,7 @@ public class MemoryMaster : MonoBehaviour
         }
         else
         {
+            //incorrect.Play();
             Debug.Log("Fail");
             ResetPuzzle();
         }
@@ -159,13 +176,13 @@ public class MemoryMaster : MonoBehaviour
             {
                 phase1 = false;
                 phase2 = true;
-                PuzzleSolution(5);
+                StartCoroutine(PuzzleSolution(5));
             }
             else if (current_phase == 2)
             {
                 phase2 = false;
                 phase3 = true;
-                PuzzleSolution(7);
+                StartCoroutine(PuzzleSolution(7));
             }
             else if (current_phase == 3)
             {
@@ -189,8 +206,6 @@ public class MemoryMaster : MonoBehaviour
 
     private void ResetPuzzle()
     {
-        player_length = 0;
-        correct_count = 0;
         phase2 = false;
         phase3 = false;
 

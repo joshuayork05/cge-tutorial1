@@ -7,6 +7,7 @@ public class ObjChecker : MonoBehaviour
     [SerializeField] MemoryMaster puzzleMaster;
     [SerializeField] private int object_number;
     [SerializeField] ParticleSystem objectOn;
+    [SerializeField] AudioSource sound;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -17,14 +18,12 @@ public class ObjChecker : MonoBehaviour
     public void ParticleDisplay()
     {
         objectOn.Play();
-        Debug.Log("Start");
+        sound.Play();
         Invoke("EndParticle", 1.0f);
-        Debug.Log("End pt1");
     }
 
     private void EndParticle()
     {
-        Debug.Log("End pt2");
         objectOn.Stop();
     }
 }
