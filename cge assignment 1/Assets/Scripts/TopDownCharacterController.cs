@@ -11,6 +11,7 @@ public class TopDownCharacterController : MonoBehaviour
     [SerializeField] SpeedSystem speed_functions;
     [SerializeField] HealthSystem healthSystem;
     [SerializeField] EnemyAttack enemyAttack;
+    [SerializeField] Camera cam;
 
     #region Framework Stuff
     //Reference to attached animator
@@ -135,6 +136,11 @@ public class TopDownCharacterController : MonoBehaviour
                 transform.position = respawn;
             }
         }
+    }
+
+    public void UpdateCameraSize(float size)
+    {
+        cam.orthographicSize = size;
     }
 
 }

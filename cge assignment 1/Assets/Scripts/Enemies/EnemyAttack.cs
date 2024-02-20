@@ -44,4 +44,9 @@ public class EnemyAttack : MonoBehaviour
         EnemyState = state;
     }
 
+    public void UpdateFireRate()
+    {
+        cooldown = 0.75f;
+    }
+
 }
