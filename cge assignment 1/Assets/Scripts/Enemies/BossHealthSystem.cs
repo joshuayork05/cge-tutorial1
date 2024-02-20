@@ -17,8 +17,6 @@ public class BossHealthSystem : MonoBehaviour
     private bool phase4 = false;
     private bool waiting = false;
 
-    Vector2 EnemySpawnPoint;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("PlayerProjectiles"))
@@ -40,12 +38,19 @@ public class BossHealthSystem : MonoBehaviour
         {
             if (health < (maxHealth * 0.75) && health > (maxHealth * 0.5))
             {
-                phase1 = false;
-                phase2 = true;
                 waiting = true;
                 attack.UpdateFireRate();
                 boss.EnterWaitingMode();
-                spawnEnemies.SpawnEnemy("hfld", SetSpawnPoint(10, 10));
+                spawnEnemies.UpdatePhase(2);
+                spawnEnemies.ActivateEnemies();
+
+                if (spawnEnemies.CheckEnemyStates())
+                {
+                    phase1 = false;
+                    phase2 = true;
+                    waiting = false;
+                    boss.ExitWaitingMode();
+                } 
 
             }
         }
@@ -70,11 +75,6 @@ public class BossHealthSystem : MonoBehaviour
             Destroy(gameObject);
         }
         
-    }
-
-    private Vector2 SetSpawnPoint(float x, float y)
-    {
-        return EnemySpawnPoint = new Vector2(x, y);
     }
 
 }

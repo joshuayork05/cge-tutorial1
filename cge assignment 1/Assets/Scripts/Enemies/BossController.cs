@@ -13,8 +13,6 @@ public class BossController : MonoBehaviour
 
     NavMeshAgent agent;
 
-    private bool first = true;
-
     enum EnemyStates
     { 
         Idle,
@@ -43,14 +41,8 @@ public class BossController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (first)
-            {
-                CurrentState = EnemyStates.Attack;
-                player.UpdateCameraSize(10);
-            }
-
-            first = false;
-
+            CurrentState = EnemyStates.Attack;
+            player.UpdateCameraSize(10);
         }
     }
 
