@@ -17,15 +17,23 @@ public class BossHealthSystem : MonoBehaviour
     private bool phase4 = false;
     private bool waiting = false;
 
+    private bool firsttime = true;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("PlayerProjectiles"))
         {
-            if (!waiting)
+            Debug.Log(waiting);
+
+            if (waiting == false)
             {
-                health -= weapon.GetProjectileDamage();
-                CheckHealth();
+                Debug.LogError("damage");
+                health -= weapon.GetProjectileDamage();  
             }
+
+            Debug.LogWarning("No damage");
+
+            CheckHealth();
 
             Destroy(collision.gameObject);
 
@@ -42,13 +50,19 @@ public class BossHealthSystem : MonoBehaviour
                 attack.UpdateFireRate();
                 boss.EnterWaitingMode();
                 spawnEnemies.UpdatePhase(2);
-                spawnEnemies.ActivateEnemies();
+
+                if (firsttime)
+                {
+                    spawnEnemies.ActivateEnemies();
+                    firsttime = false;
+                }
 
                 if (spawnEnemies.CheckEnemyStates())
                 {
                     phase1 = false;
                     phase2 = true;
                     waiting = false;
+                    firsttime = true;
                     boss.ExitWaitingMode();
                 } 
 
@@ -58,16 +72,50 @@ public class BossHealthSystem : MonoBehaviour
         {
             if (health < (maxHealth * 0.5) && health > (maxHealth * 0.25))
             {
-                phase2 = false;
-                phase3 = true;
+                waiting = true;
+                boss.UpdateMovementSpeed();
+                boss.EnterWaitingMode();
+                spawnEnemies.UpdatePhase(3);
+
+                if (firsttime)
+                {
+                    spawnEnemies.ActivateEnemies();
+                    firsttime = false;
+                }
+
+                if (spawnEnemies.CheckEnemyStates())
+                {
+                    phase2 = false;
+                    phase3 = true;
+                    waiting = false;
+                    firsttime = true;
+                    boss.ExitWaitingMode();
+                }
             }
         }
         else if (phase3)
         {
             if ((health < (maxHealth * 0.25) && health > 0))
             {
-                phase3 = false;
-                phase4 = true;
+                waiting = true;
+                boss.UpdateMovementSpeed();
+                boss.EnterWaitingMode();
+                spawnEnemies.UpdatePhase(4);
+
+                if (firsttime)
+                {
+                    spawnEnemies.ActivateEnemies();
+                    firsttime = false;
+                }
+
+                if (spawnEnemies.CheckEnemyStates())
+                {
+                    phase3 = false;
+                    phase4 = true;
+                    waiting = false;
+                    firsttime = true;
+                    boss.ExitWaitingMode();
+                }
             }
         }
         else if (health <= 0)

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -49,4 +50,8 @@ public class EnemyAttack : MonoBehaviour
         cooldown = 0.75f;
     }
 
+    public void UpdateProjectileDamage()
+    {
+        projectile_damage += 5;
+    }
 }

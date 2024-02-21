@@ -76,31 +76,29 @@ public class BossAttackSys : MonoBehaviour
             case Phase.Phase2:
                 for (int i = 0; i < Phase2Enemies.Length; i++)
                 {
-                    if (Phase2Enemies[i].activeSelf == false)
+                    if (Phase2Enemies[i].activeInHierarchy == false)
                     {
                         dead_count++;
                     }
                 }
                 if (dead_count == Phase2Enemies.Length)
                 {
-                    Debug.Log("true");
                     return true;
                 }
                 else
                 {
-                    Debug.Log("False");
                     return false;
                 }
             
             case Phase.Phase3:
-                for (int i = 0; i < Phase2Enemies.Length; i++)
+                for (int i = 0; i < Phase3Enemies.Length; i++)
                 {
-                    if (Phase2Enemies[i].activeSelf == false)
+                    if (Phase3Enemies[i].activeSelf == false)
                     {
                         dead_count++;
                     }
                 }
-                if (dead_count == Phase2Enemies.Length)
+                if (dead_count == Phase3Enemies.Length)
                 {
                     return true;
                 }

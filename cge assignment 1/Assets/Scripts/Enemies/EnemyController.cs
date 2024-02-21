@@ -5,6 +5,7 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
     [SerializeField] private Weapons weapon;
+    [SerializeField] private Disabler disabler;
     [SerializeField] private float health;
     [SerializeField] private float maxHealth;
 
@@ -22,7 +23,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if (health <= 0)
         {
-            gameObject.SetActive(false);
+            disabler.DisableObject();
         }
     }
 }

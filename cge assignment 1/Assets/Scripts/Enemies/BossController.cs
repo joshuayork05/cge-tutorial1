@@ -46,6 +46,11 @@ public class BossController : MonoBehaviour
         }
     }
 
+    public void UpdateMovementSpeed()
+    {
+        agent.speed += 0.5f;
+    }
+
     public void EnterWaitingMode()
     {
         CurrentState = EnemyStates.Waiting;

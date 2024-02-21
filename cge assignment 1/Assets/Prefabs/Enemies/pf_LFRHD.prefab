@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7324711168171656282}
   - component: {fileID: 3500163924070845050}
   - component: {fileID: 3579509318379386249}
+  - component: {fileID: 6330728129238960342}
   m_Layer: 0
   m_Name: pf_LFRHD
   m_TagString: Untagged
@@ -135,6 +136,19 @@ CircleCollider2D:
   m_Offset: {x: -0.4123521, y: 0}
   serializedVersion: 2
   m_Radius: 5
+--- !u!114 &6330728129238960342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7688875315214923536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dde5cd252831c14aad15c53a9bd9f9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Gobject: {fileID: 7688875315214923536}
 --- !u!1 &8595682010734227267
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,6 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
+  disabler: {fileID: 0}
   health: 100
   maxHealth: 100
 --- !u!114 &2836800904544943366
