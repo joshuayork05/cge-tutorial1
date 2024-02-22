@@ -23,15 +23,10 @@ public class BossHealthSystem : MonoBehaviour
     {
         if (collision.CompareTag("PlayerProjectiles"))
         {
-            Debug.Log(waiting);
-
             if (waiting == false)
             {
-                Debug.LogError("damage");
                 health -= weapon.GetProjectileDamage();  
             }
-
-            Debug.LogWarning("No damage");
 
             CheckHealth();
 
@@ -102,6 +97,7 @@ public class BossHealthSystem : MonoBehaviour
                 boss.EnterWaitingMode();
                 spawnEnemies.UpdatePhase(4);
 
+                //ensures enemies are only spawned once per phase
                 if (firsttime)
                 {
                     spawnEnemies.ActivateEnemies();
@@ -110,10 +106,10 @@ public class BossHealthSystem : MonoBehaviour
 
                 if (spawnEnemies.CheckEnemyStates())
                 {
+                    Debug.Log("End phase4");
                     phase3 = false;
                     phase4 = true;
                     waiting = false;
-                    firsttime = true;
                     boss.ExitWaitingMode();
                 }
             }

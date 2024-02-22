@@ -21,6 +21,7 @@ public class BossController : MonoBehaviour
     }
 
     EnemyStates CurrentState;
+    private bool firsttime = true;
 
     private void Start()
     {
@@ -41,8 +42,15 @@ public class BossController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            CurrentState = EnemyStates.Attack;
-            player.UpdateCameraSize(10);
+            if (firsttime)
+            {
+                CurrentState = EnemyStates.Attack;
+                attack.UpdateAttackState("Attack");
+
+                player.UpdateCameraSize(10);
+                firsttime = false;
+            }
+            
         }
     }
 
@@ -54,11 +62,13 @@ public class BossController : MonoBehaviour
     public void EnterWaitingMode()
     {
         CurrentState = EnemyStates.Waiting;
+        attack.UpdateAttackState("Waiting");
     }
 
     public void ExitWaitingMode()
     {
         CurrentState = EnemyStates.Attack;
+        attack.UpdateAttackState("Attack");
     }
 
 

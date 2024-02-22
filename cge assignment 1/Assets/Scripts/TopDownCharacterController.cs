@@ -4,6 +4,7 @@ using System.Data;
 using Unity.VisualScripting;
 using UnityEditor.MPE;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TopDownCharacterController : MonoBehaviour
 {
@@ -131,9 +132,7 @@ public class TopDownCharacterController : MonoBehaviour
 
             if (healthSystem.IsPlayerAlive() == false)
             {
-                Vector3 respawn = new Vector3(8, 7, 0);
-
-                transform.position = respawn;
+                SceneManager.LoadScene(2);
             }
         }
     }

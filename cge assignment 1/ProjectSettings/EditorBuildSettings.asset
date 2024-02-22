@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 1c171270023f9154eb9cc30a2b9bf588
+  - enabled: 1
+    path: Assets/Scenes/DeathMenu.unity
+    guid: 9e6a75a7290f1494dad0161b7ec9ae96
   m_configObjects: {}
