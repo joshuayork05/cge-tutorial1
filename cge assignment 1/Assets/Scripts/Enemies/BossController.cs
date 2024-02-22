@@ -46,7 +46,6 @@ public class BossController : MonoBehaviour
             {
                 CurrentState = EnemyStates.Attack;
                 attack.UpdateAttackState("Attack");
-
                 player.UpdateCameraSize(10);
                 firsttime = false;
             }

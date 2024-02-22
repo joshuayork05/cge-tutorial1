@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -125,15 +126,30 @@ public class TopDownCharacterController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("EnemyProjectile"))
-        {
-            Destroy(collision.gameObject);
-            healthSystem.UpdateHealth(false,enemyAttack.GetProjectileDamage());
 
-            if (healthSystem.IsPlayerAlive() == false)
-            {
-                SceneManager.LoadScene(2);
-            }
+        if (collision.CompareTag("hfrldProjectile"))
+        {
+            healthSystem.Collidedwith(collision.tag);
+            Destroy(collision.gameObject);
+        }
+        else if (collision.CompareTag("lfrhdProjectile"))
+        {
+            healthSystem.Collidedwith(collision.tag);
+            Destroy(collision.gameObject);
+        }
+        else if (collision.CompareTag("bossProjectile"))
+        {
+            healthSystem.Collidedwith(collision.tag);
+            Destroy(collision.gameObject);
+        }
+        else
+        {
+            Debug.Log("Tag error");
+        }
+
+        if (healthSystem.IsPlayerAlive() == false)
+        {
+            SceneManager.LoadScene(2);
         }
     }
 

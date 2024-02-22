@@ -9,6 +9,7 @@ public class SpecificOrderMaster : MonoBehaviour
     [SerializeField] ObjectChecker obj3;
     [SerializeField] ObjectChecker obj4;
     [SerializeField] ObjectChecker obj5;
+    [SerializeField] Disabler disabler;
 
     private bool object1 = false;
     private bool object2 = false;
@@ -95,7 +96,7 @@ public class SpecificOrderMaster : MonoBehaviour
     {
         if (object1 == true && object2 == true && object3 == true && object4 == true && object5 == true)
         {
-            Debug.Log("Solution");
+            disabler.DisableObject();
         }
     }
 }

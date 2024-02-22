@@ -36,7 +36,7 @@ Transform:
   - {fileID: 6101743253887283840}
   - {fileID: 5751360339797404510}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &3728792785079383318
 NavMeshAgent:
@@ -297,8 +297,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
   disabler: {fileID: 0}
-  health: 100
-  maxHealth: 100
+  health: 45
+  maxHealth: 45
 --- !u!114 &2836800904544943366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,13 +311,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a3219c7376da84192b8d47ce23f919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pf_projectile: {fileID: 1950839920520493953, guid: dee53a856287a6e46882d17ae584aa80, type: 3}
+  pf_projectile: {fileID: 1950839920520493953, guid: 5348275a75a450245a2464151e52c1d8, type: 3}
   firepoint: {fileID: 5751360339797404510}
   target: {fileID: 0}
   cooldown: 1.5
   attack_timer: 0
-  projectile_speed: 20
-  projectile_damage: 25
+  projectile_speed: 15
+  projectile_damage: 8
   EnemyState: 
 --- !u!58 &2164278231805736116
 CircleCollider2D:

@@ -148,8 +148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
   disabler: {fileID: 0}
-  health: 100
-  maxHealth: 100
+  health: 35
+  maxHealth: 35
 --- !u!114 &9095343700383139842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,7 +293,7 @@ Transform:
   - {fileID: 5518676035626106261}
   - {fileID: 8905994365443706907}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &1031402492653427696
 NavMeshAgent:

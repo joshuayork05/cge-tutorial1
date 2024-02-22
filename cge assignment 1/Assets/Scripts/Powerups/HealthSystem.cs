@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
+    [SerializeField] EnemyDamages EnemyDamageInfo;
     [SerializeField] ShieldSystem shield;
     [SerializeField] HealthUI healthBar;
     [SerializeField] private float max_health;
@@ -61,4 +62,23 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
+    public void Collidedwith(string tag_name)
+    {
+        if (tag_name == "hfrldProjectile")
+        {
+            UpdateHealth(false, EnemyDamageInfo.GetProjectileDamage("hfrld"));
+        }
+        else if (tag_name == "lfrhdProjectile")
+        {
+            UpdateHealth(false, EnemyDamageInfo.GetProjectileDamage("lfrhd"));
+        }
+        else if (tag_name == "bossProjectile")
+        {
+            UpdateHealth(false, EnemyDamageInfo.GetProjectileDamage("boss"));
+        }
+        else
+        {
+            Debug.Log("Tag error");
+        }
+    }
 }

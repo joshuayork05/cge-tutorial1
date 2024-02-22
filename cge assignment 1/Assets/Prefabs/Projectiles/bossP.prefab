@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 6702726950202295835}
   - component: {fileID: 7457845661541889630}
   m_Layer: 0
-  m_Name: Enemyprojectile
-  m_TagString: EnemyProjectile
+  m_Name: bossP
+  m_TagString: bossProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

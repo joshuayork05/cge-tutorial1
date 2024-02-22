@@ -10,11 +10,12 @@ public class BossHealthSystem : MonoBehaviour
     [SerializeField] BossController boss;
     [SerializeField] BossAttackSys spawnEnemies;
     [SerializeField] EnemyAttack attack;
+    [SerializeField] EnemyDamages enemyDamages;
 
     private bool phase1 = true;
     private bool phase2 = false;
     private bool phase3 = false;
-    private bool phase4 = false;
+
     private bool waiting = false;
 
     private bool firsttime = true;
@@ -42,13 +43,13 @@ public class BossHealthSystem : MonoBehaviour
             if (health < (maxHealth * 0.75) && health > (maxHealth * 0.5))
             {
                 waiting = true;
-                attack.UpdateFireRate();
                 boss.EnterWaitingMode();
                 spawnEnemies.UpdatePhase(2);
 
                 if (firsttime)
                 {
                     spawnEnemies.ActivateEnemies();
+                    attack.UpdateFireRate();
                     firsttime = false;
                 }
 
@@ -68,13 +69,13 @@ public class BossHealthSystem : MonoBehaviour
             if (health < (maxHealth * 0.5) && health > (maxHealth * 0.25))
             {
                 waiting = true;
-                boss.UpdateMovementSpeed();
                 boss.EnterWaitingMode();
                 spawnEnemies.UpdatePhase(3);
 
                 if (firsttime)
                 {
                     spawnEnemies.ActivateEnemies();
+                    boss.UpdateMovementSpeed();
                     firsttime = false;
                 }
 
@@ -93,7 +94,6 @@ public class BossHealthSystem : MonoBehaviour
             if ((health < (maxHealth * 0.25) && health > 0))
             {
                 waiting = true;
-                boss.UpdateMovementSpeed();
                 boss.EnterWaitingMode();
                 spawnEnemies.UpdatePhase(4);
 
@@ -101,6 +101,8 @@ public class BossHealthSystem : MonoBehaviour
                 if (firsttime)
                 {
                     spawnEnemies.ActivateEnemies();
+                    attack.UpdateProjectileDamage();
+                    enemyDamages.UpdateBossDamage();
                     firsttime = false;
                 }
 
@@ -108,7 +110,6 @@ public class BossHealthSystem : MonoBehaviour
                 {
                     Debug.Log("End phase4");
                     phase3 = false;
-                    phase4 = true;
                     waiting = false;
                     boss.ExitWaitingMode();
                 }
