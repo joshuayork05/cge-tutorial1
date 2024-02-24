@@ -10,6 +10,7 @@ TagManager:
   - lfrhdProjectile
   - bossProjectile
   - EnemyProjectile
+  - WeaponChoice
   layers:
   - Default
   - TransparentFX

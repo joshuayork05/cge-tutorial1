@@ -14,7 +14,7 @@ public class Weapons : MonoBehaviour
     [SerializeField] private float cooldown_length = 1f;
     [SerializeField] private float max_ammo = 10;
     [SerializeField] private float ammo;
-    [SerializeField] private bool In_menu;
+
     private float reload_time = 2;
 
     private float timer;
@@ -27,7 +27,7 @@ public class Weapons : MonoBehaviour
 
     private void Start()
     {
-        RapidFireWeapon();
+        UpdateWeapon(FindAnyObjectByType<WeaponChosen>().GetWeaponChosen());
         ammo = max_ammo;
     }
 
@@ -105,7 +105,27 @@ public class Weapons : MonoBehaviour
         return projectile_damage;
     }
 
-    public void BasicWeapon()
+    private void UpdateWeapon(string weaponname)
+    {
+        if (weaponname == "standard")
+        {
+            BasicWeapon();
+        }
+        else if (weaponname == "rapid_fire")
+        {
+            RapidFireWeapon();
+        }
+        else if (weaponname == "sniper")
+        {
+            SniperWeapon();
+        }
+        else
+        {
+            Debug.Log("Weapon error");
+        }
+    }
+
+    private void BasicWeapon()
     {
         ammo = 15;
         max_ammo = 15;
@@ -115,7 +135,7 @@ public class Weapons : MonoBehaviour
         reload_time = 2f;
     }
 
-    public void RapidFireWeapon()
+    private void RapidFireWeapon()
     {
         ammo = 30;
         max_ammo = 30;
@@ -125,7 +145,7 @@ public class Weapons : MonoBehaviour
         reload_time = 5f;
     }
 
-    public void SniperWeapon()
+    private void SniperWeapon()
     {
         ammo = 5;
         max_ammo = 5;
