@@ -18,33 +18,33 @@ public class Pickups : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        pickupEffect.Play();
-
-        if (pickup.name == "Shield_pickup")
-        {
-            shieldSystem.StartShieldTimer();
-        }
-        else if (pickup.name == "Health_pickup")
-        {
-            healthSystem.UpdateHealth(true, HealthBoostAmount);
-        }
-        else if (pickup.name == "SpeedBoost_pickup")
-        {
-            speedSystem.StartSpeedTimer();
-        }
-        else if (pickup.name == "FireRate_Pickup")
-        {
-            weapons.UpdateFireRate(FireRateChange);
-        }
-        else if (pickup.name == "DamageBoost_Pickup")
-        {
-            weapons.updateProjectileDamage(DamageBoostAmount);
-        }
-
         if (collision.CompareTag("Player"))
         {
+            pickupEffect.Play();
+
+            if (pickup.name == "Shield_pickup")
+            {
+                shieldSystem.StartShieldTimer();
+            }
+            else if (pickup.name == "Health_pickup")
+            {
+                healthSystem.UpdateHealth(true, HealthBoostAmount);
+            }
+            else if (pickup.name == "SpeedBoost_pickup")
+            {
+                speedSystem.StartSpeedTimer();
+            }
+            else if (pickup.name == "FireRate_Pickup")
+            {
+                weapons.UpdateFireRate(FireRateChange);
+            }
+            else if (pickup.name == "DamageBoost_Pickup")
+            {
+                weapons.updateProjectileDamage(DamageBoostAmount);
+            }
+
             Destroy(gameObject);
+
         }
 
     }

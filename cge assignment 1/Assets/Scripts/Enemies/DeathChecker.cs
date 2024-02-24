@@ -7,12 +7,9 @@ public class DeathChecker : MonoBehaviour
     [SerializeField] GameObject[] thingsToCheck;
     [SerializeField] Disabler disabler;
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         int disablednum = 0;
-
-        Debug.Log("AAAAAAAAA");
 
         if (collision.CompareTag("Player"))
         {

@@ -6,7 +6,7 @@ public class EnemyDamages : MonoBehaviour
 {
 
 
-    private float bossDamage = 10;
+    private float bossDamage = 8;
 
     public float GetProjectileDamage(string name)
     {
@@ -26,6 +26,6 @@ public class EnemyDamages : MonoBehaviour
 
     public void UpdateBossDamage()
     {
-        bossDamage = 15;
+        bossDamage = 13;
     }
 }

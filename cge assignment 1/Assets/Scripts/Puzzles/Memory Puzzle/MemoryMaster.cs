@@ -63,6 +63,8 @@ public class MemoryMaster : MonoBehaviour
         int index = 0;
         int count = 0;
 
+        yield return new WaitForSeconds(1.5f);
+
         while (count < phase_size)
         {
             current_solution[index] = GenerateObjectNum();
