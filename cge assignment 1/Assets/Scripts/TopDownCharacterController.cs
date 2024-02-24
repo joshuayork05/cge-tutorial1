@@ -126,7 +126,6 @@ public class TopDownCharacterController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (collision.CompareTag("hfrldProjectile"))
         {
             healthSystem.Collidedwith(collision.tag);
@@ -141,10 +140,6 @@ public class TopDownCharacterController : MonoBehaviour
         {
             healthSystem.Collidedwith(collision.tag);
             Destroy(collision.gameObject);
-        }
-        else
-        {
-            Debug.Log("Tag error");
         }
 
         if (healthSystem.IsPlayerAlive() == false)

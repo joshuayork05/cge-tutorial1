@@ -90,7 +90,7 @@ public class MazeMaster : MonoBehaviour
 
     private void ResetMaze()
     {
-        mazeStart = new Vector3(-11.5f, 5f, 0f);
+        mazeStart = new Vector3(53f, -86.5f, 0f);
 
         phase1 = true;
         phase2 = false;

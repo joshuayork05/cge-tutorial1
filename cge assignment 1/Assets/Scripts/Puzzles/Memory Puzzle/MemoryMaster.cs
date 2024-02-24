@@ -10,6 +10,7 @@ public class MemoryMaster : MonoBehaviour
     [SerializeField] IndicatorManager indicatorManager;
     [SerializeField] AudioSource incorrect;
     [SerializeField] AudioSource correct;
+    [SerializeField] Disabler disabler;
 
     private bool phase1;
     private bool phase2;
@@ -160,10 +161,6 @@ public class MemoryMaster : MonoBehaviour
             }
             CheckSolution(7, 3);
         }
-        else
-        {
-            Debug.Log("Error");
-        }
     }
 
     private void CheckSolution(int phase_requirement, int current_phase)
@@ -186,14 +183,13 @@ public class MemoryMaster : MonoBehaviour
             }
             else if (current_phase == 3)
             {
-                Debug.Log("Win");
+                disabler.DisableObject();
             }
-            Console.Clear();
+
             NextPhaseSetUp();
         }
         else
         {
-            Debug.Log("Wrong solution");
             ResetPuzzle();
         }
     }
