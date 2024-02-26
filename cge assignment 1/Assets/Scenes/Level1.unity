@@ -293,6 +293,10 @@ PrefabInstance:
       propertyPath: shieldSystem
       value: 
       objectReference: {fileID: 1214242981}
+    - target: {fileID: 2780612790712301255, guid: 5fefa7a456442304a805c07098af58e1, type: 3}
+      propertyPath: m_Radius
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 3620108166058837300, guid: 5fefa7a456442304a805c07098af58e1, type: 3}
       propertyPath: m_Name
       value: DamageBoost_Pickup
@@ -630,6 +634,10 @@ PrefabInstance:
     - target: {fileID: 1294556337640118446, guid: 53431fd5a24bf69489bcd81cf4ca0999, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249956062947197695, guid: 53431fd5a24bf69489bcd81cf4ca0999, type: 3}
+      propertyPath: m_Radius
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 7724688105445823006, guid: 53431fd5a24bf69489bcd81cf4ca0999, type: 3}
       propertyPath: player
@@ -1211,6 +1219,10 @@ PrefabInstance:
     - target: {fileID: 4241107780014691578, guid: 3b008d4fcfadbde45af95ef0ef043905, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272940155663326321, guid: 3b008d4fcfadbde45af95ef0ef043905, type: 3}
+      propertyPath: m_Radius
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 6233776828324666677, guid: 3b008d4fcfadbde45af95ef0ef043905, type: 3}
       propertyPath: m_RootOrder
@@ -27521,7 +27533,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835711293}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02000004, y: -0.009999752, z: -0.0058455467}
+  m_LocalPosition: {x: -0.02000004, y: 0.04, z: -0.0058455467}
   m_LocalScale: {x: 3.05616, y: 2.5468, z: 2.5468}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -145114,7 +145126,6 @@ MonoBehaviour:
   cooldown_length: 1
   max_ammo: 10
   ammo: 0
-  In_menu: 0
 --- !u!1001 &1866456818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -145729,7 +145740,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7032243326896857003, guid: 051f9d73f819d3d4d80368c55d008d2d, type: 3}
       propertyPath: m_Radius
-      value: 0.5
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8482270188592391134, guid: 051f9d73f819d3d4d80368c55d008d2d, type: 3}
       propertyPath: m_RootOrder
@@ -145901,6 +145912,10 @@ PrefabInstance:
     - target: {fileID: 1294556337640118446, guid: 53431fd5a24bf69489bcd81cf4ca0999, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249956062947197695, guid: 53431fd5a24bf69489bcd81cf4ca0999, type: 3}
+      propertyPath: m_Radius
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 7724688105445823006, guid: 53431fd5a24bf69489bcd81cf4ca0999, type: 3}
       propertyPath: player
@@ -146700,6 +146715,10 @@ PrefabInstance:
     - target: {fileID: 1294556337640118446, guid: 53431fd5a24bf69489bcd81cf4ca0999, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249956062947197695, guid: 53431fd5a24bf69489bcd81cf4ca0999, type: 3}
+      propertyPath: m_Radius
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 7724688105445823006, guid: 53431fd5a24bf69489bcd81cf4ca0999, type: 3}
       propertyPath: player
