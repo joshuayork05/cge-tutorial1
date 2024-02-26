@@ -327,7 +327,7 @@ MonoBehaviour:
     Cooldown: 0.1s
 
     Reload
-    Time: 5s
+    Time: 3s
 
 '
   m_isRightToLeft: 0
@@ -2078,7 +2078,7 @@ MonoBehaviour:
     Cooldown: 0.8s
 
     Reload
-    Time: 2s
+    Time: 1.5s
 
 '
   m_isRightToLeft: 0
@@ -2422,12 +2422,12 @@ MonoBehaviour:
 
     Speed: 15
 
-    Ammo: 5
+    Ammo: 10
 
-    Cooldown: 1.5s
+    Cooldown: 1s
 
     Reload
-    Time: 2.5s
+    Time: 2s
 
 '
   m_isRightToLeft: 0

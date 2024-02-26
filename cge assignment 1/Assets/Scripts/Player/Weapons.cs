@@ -132,7 +132,7 @@ public class Weapons : MonoBehaviour
         projectile_damage = 10;
         projectile_speed = 8;
         cooldown_length = 0.8f;
-        reload_time = 2f;
+        reload_time = 1.5f;
     }
 
     private void RapidFireWeapon()
@@ -142,17 +142,17 @@ public class Weapons : MonoBehaviour
         projectile_damage = 8;
         projectile_speed = 8;
         cooldown_length = 0.1f;
-        reload_time = 5f;
+        reload_time = 3f;
     }
 
     private void SniperWeapon()
     {
-        ammo = 5;
-        max_ammo = 5;
+        ammo = 10;
+        max_ammo = 10;
         projectile_damage = 25;
         projectile_speed = 15;
-        cooldown_length = 1.5f;
-        reload_time = 2.5f;
+        cooldown_length = 1f;
+        reload_time = 2f;
     }
 
 

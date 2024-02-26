@@ -66,7 +66,6 @@ public class MemoryMaster : MonoBehaviour
         while (count < phase_size)
         {
             current_solution[index] = GenerateObjectNum();
-            Debug.Log(current_solution[index]);
 
             indicatorManager.PlayObject(current_solution[index]);
 
@@ -97,8 +96,7 @@ public class MemoryMaster : MonoBehaviour
     {
         if (player_solution[index] == current_solution[index])
         {
-            //correct.Play();
-            Debug.Log("Match");
+            correct.Play();
 
             if (counter)
             {
@@ -107,8 +105,7 @@ public class MemoryMaster : MonoBehaviour
         }
         else
         {
-            //incorrect.Play();
-            Debug.Log("Fail");
+            incorrect.Play();
             ResetPuzzle();
         }
     }
