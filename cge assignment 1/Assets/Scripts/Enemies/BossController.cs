@@ -10,6 +10,7 @@ public class BossController : MonoBehaviour
 {
     [SerializeField] TopDownCharacterController player;
     [SerializeField] EnemyAttack attack;
+    [SerializeField] MusicController music;
 
     NavMeshAgent agent;
 
@@ -44,6 +45,8 @@ public class BossController : MonoBehaviour
         {
             if (firsttime)
             {
+                music.StopMusic("underground");
+                music.StartMusic("boss");
                 CurrentState = EnemyStates.Attack;
                 attack.UpdateAttackState("Attack");
                 player.UpdateCameraSize(10);

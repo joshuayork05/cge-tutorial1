@@ -43,8 +43,6 @@ public class MemoryMaster : MonoBehaviour
     { 
         player_solution[player_length] = object_number;
 
-        //Debug.Log($"obj: {object_number}, player: {player_solution[0]}, Solution: {current_solution[0]}");
-
         indicatorManager.PlayObject(object_number);
 
         CompareCurrentInput(player_length, false);
@@ -77,12 +75,6 @@ public class MemoryMaster : MonoBehaviour
             index++;
             count++;
         }
-
-        /*
-        for (int i = 0; i <= current_solution.Length - 1; i++)
-        {
-            Debug.Log($"Solution: {current_solution[i]}");
-        }*/
     }
 
     private void CheckPlayerLength()
@@ -99,17 +91,10 @@ public class MemoryMaster : MonoBehaviour
         {
             CompareSolutions();
         }
-        else
-        {
-            //Debug.Log("Player length isn't correct");
-        }
     }
 
     private void CompareCurrentInput(int index, bool counter)
     {
-
-        //Debug.Log($"\nPlayer: {player_solution[index]} - Solution: {current_solution[index]}");
-
         if (player_solution[index] == current_solution[index])
         {
             //correct.Play();
@@ -167,8 +152,6 @@ public class MemoryMaster : MonoBehaviour
 
     private void CheckSolution(int phase_requirement, int current_phase)
     {
-        Debug.Log($"Correct count: {correct_count} - Phase requirement: {phase_requirement} - Current phase: {current_phase}"); 
-
         if (correct_count == phase_requirement)
         {
             if (current_phase == 1)

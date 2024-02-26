@@ -12,6 +12,7 @@ public class BossHealthSystem : MonoBehaviour
     [SerializeField] BossAttackSys spawnEnemies;
     [SerializeField] EnemyAttack attack;
     [SerializeField] EnemyDamages enemyDamages;
+    [SerializeField] MusicController music;
 
     private bool phase1 = true;
     private bool phase2 = false;
@@ -119,6 +120,8 @@ public class BossHealthSystem : MonoBehaviour
         else if (health <= 0)
         {
             Destroy(gameObject);
+            music.StopMusic("boss");
+            music.StartMusic("victory");
             SceneManager.LoadScene("Victory");
         }
         

@@ -7,6 +7,9 @@ public class GameOverManager : MonoBehaviour
 {
     public void Retry()
     {
+        FindAnyObjectByType<MusicController>().StopMusic("gameover");
+        FindAnyObjectByType<MusicController>().StartMusic("overworld");
+
         SceneManager.LoadScene("Level1");
     }
 }
