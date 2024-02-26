@@ -11,6 +11,7 @@ public class MemoryMaster : MonoBehaviour
     [SerializeField] AudioSource incorrect;
     [SerializeField] AudioSource correct;
     [SerializeField] Disabler disabler;
+    [SerializeField] Disabler disableSelf;
 
     private bool phase1;
     private bool phase2;
@@ -165,7 +166,9 @@ public class MemoryMaster : MonoBehaviour
             }
             else if (current_phase == 3)
             {
+                indicatorManager.EndPuzzle();
                 disabler.DisableObject();
+                disableSelf.DisableObject();
             }
 
             NextPhaseSetUp();

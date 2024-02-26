@@ -118,11 +118,11 @@ public class BossHealthSystem : MonoBehaviour
             }
         }
         else if (health <= 0)
-        {
-            Destroy(gameObject);
+        { 
             music.StopMusic("boss");
             music.StartMusic("victory");
             SceneManager.LoadScene("Victory");
+            Destroy(gameObject);
         }
         
     }

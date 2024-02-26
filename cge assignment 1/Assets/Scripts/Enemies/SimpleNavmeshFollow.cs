@@ -10,7 +10,6 @@ public class SimpleNavmeshFollow : MonoBehaviour
     public Transform target;
     NavMeshAgent agent;
 
-
     enum enemyStates
     {
         Idle,
@@ -20,12 +19,10 @@ public class SimpleNavmeshFollow : MonoBehaviour
     enemyStates CurrentState;
 
 
-
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
     }
-
 
     void Update()
     {

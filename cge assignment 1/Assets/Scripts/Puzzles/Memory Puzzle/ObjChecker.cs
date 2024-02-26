@@ -9,10 +9,11 @@ public class ObjChecker : MonoBehaviour
     [SerializeField] ParticleSystem objectOn;
     [SerializeField] AudioSource sound;
 
+    private bool finished = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && finished == false)
         {
             puzzleMaster.GetObjectNumber(object_number);
         }
@@ -28,5 +29,10 @@ public class ObjChecker : MonoBehaviour
     private void EndParticle()
     {
         objectOn.Stop();
+    }
+
+    public void EndPuzzle()
+    {
+        finished = true;
     }
 }

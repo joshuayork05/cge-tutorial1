@@ -20,7 +20,6 @@ public class BossAttackSys : MonoBehaviour
 
     Phase current_phase = Phase.Phase1;
 
-
     public void UpdatePhase(int phase_num)
     {
         switch (phase_num)
@@ -130,6 +129,4 @@ public class BossAttackSys : MonoBehaviour
         //added because "all code paths need a return value" - this won't be used.
         return false;
     }
-
-
 }

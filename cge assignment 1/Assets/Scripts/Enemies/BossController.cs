@@ -22,6 +22,8 @@ public class BossController : MonoBehaviour
     }
 
     EnemyStates CurrentState;
+
+    //somethings only need to happen once and this ensures that
     private bool firsttime = true;
 
     private void Start()

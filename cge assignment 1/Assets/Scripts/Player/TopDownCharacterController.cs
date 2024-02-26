@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using Unity.VisualScripting;
-using UnityEditor.MPE;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -127,6 +127,7 @@ public class TopDownCharacterController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //deals a certain amount of damage to the player depending on the type of projectile
         if (collision.CompareTag("hfrldProjectile"))
         {
             healthSystem.Collidedwith(collision.tag);
