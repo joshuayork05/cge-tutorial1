@@ -14,7 +14,7 @@ public class ShieldSystem : MonoBehaviour
     private bool shield_enabled = false;
     
     private float shield_timer = 0;
-    private float shield_max_time = 15;
+    private float shield_max_time = 10;
     public void StartShieldTimer()
     {
         shield_enabled = true;

@@ -16,7 +16,7 @@ public class ShieldUI : MonoBehaviour
     {
         if (shieldSystem.IsShieldEnabled())
         {
-            ShieldBar.fillAmount = time_left / 15f;
+            ShieldBar.fillAmount = time_left / 10f;
         }
     }
 
