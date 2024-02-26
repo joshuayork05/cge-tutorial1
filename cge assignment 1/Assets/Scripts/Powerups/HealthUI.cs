@@ -7,17 +7,12 @@ using Unity.VisualScripting;
 
 public class HealthUI : MonoBehaviour
 {
-    public HealthSystem healthSystem;
-    public TMPro.TextMeshProUGUI Health;
+    [SerializeField] Image healthbar;
 
-    private void Start()
+    public void UpdateDisplayedHealth(float health)
     {
-        Health.text = $"Health: {healthSystem.GetHealth()}";
-    }
-
-    public void UpdateDisplayedHealth(float ui_health)
-    {
-        Health.text = $"Health: {ui_health}";
+        //divided by 100 so it fits the scale of 0-1
+        healthbar.fillAmount = health / 100f;
     }
 
 }

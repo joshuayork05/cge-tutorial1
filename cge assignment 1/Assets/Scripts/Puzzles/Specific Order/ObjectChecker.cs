@@ -12,8 +12,12 @@ public class ObjectChecker : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ChangeParticleState();
-        objectmaster.CheckObjects(objNum);
+        if (collision.CompareTag("Player"))
+        {
+            ChangeParticleState();
+            objectmaster.CheckObjects(objNum);
+        }
+        
     }
 
     public void ChangeParticleState()

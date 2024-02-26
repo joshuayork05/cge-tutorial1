@@ -12,7 +12,10 @@ public class ObjChecker : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        puzzleMaster.GetObjectNumber(object_number);
+        if (collision.CompareTag("Player"))
+        {
+            puzzleMaster.GetObjectNumber(object_number);
+        }
     }
 
     public void ParticleDisplay()

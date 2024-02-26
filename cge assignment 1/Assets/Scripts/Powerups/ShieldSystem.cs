@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class ShieldSystem : MonoBehaviour
 {
-    [SerializeField] private float shield_timer = 0;
-    [SerializeField] private float shield_max_time = 15;
+
     [SerializeField] GameObject pf_shield;
     [SerializeField] ShieldUI shieldUI;
-    private bool shield_enabled = false;
-    public TopDownCharacterController player_info; 
+    public TopDownCharacterController player_info;
     public GameObject shieldInstance;
 
+    private bool shield_enabled = false;
+    
+    private float shield_timer = 0;
+    private float shield_max_time = 15;
     public void StartShieldTimer()
     {
         shield_enabled = true;
@@ -23,7 +25,7 @@ public class ShieldSystem : MonoBehaviour
     private void CreateShield()
     {
         shieldInstance = Instantiate(pf_shield, player_info.transform.position, Quaternion.identity);
-        shieldUI.updateShieldTextState();
+        shieldUI.updateShieldBarState();
         shieldUI.ShieldTimerVisibility();
     }
 
@@ -50,7 +52,7 @@ public class ShieldSystem : MonoBehaviour
     {
         shield_enabled = false;
         Destroy(shieldInstance);
-        shieldUI.updateShieldTextState();
+        shieldUI.updateShieldBarState();
         shieldUI.ShieldTimerVisibility();
     }
 

@@ -7,30 +7,26 @@ using UnityEngine.UI;
 public class ShieldUI : MonoBehaviour
 {
     [SerializeField] ShieldSystem shieldSystem;
-    [SerializeField] TMPro.TextMeshProUGUI Shield;
+    [SerializeField] GameObject Shield;
+    [SerializeField] Image ShieldBar;
 
-    private bool shieldTextActive = false;
-
-    private void Start()
-    {
-        Shield.enabled = false;
-    }
+    private bool shieldBarActive = false;
 
     public void UpdateShieldTimer(float time_left)
     {
         if (shieldSystem.IsShieldEnabled())
         {
-            Shield.text = $"Shield Time: {time_left}";
+            ShieldBar.fillAmount = time_left / 15f;
         }
     }
 
-    public void updateShieldTextState()
+    public void updateShieldBarState()
     {
-        shieldTextActive = !shieldTextActive;
+        shieldBarActive = !shieldBarActive;
     }
 
     public void ShieldTimerVisibility()
     {
-        Shield.enabled = shieldTextActive;
+        Shield.SetActive(shieldBarActive);
     }
 }
