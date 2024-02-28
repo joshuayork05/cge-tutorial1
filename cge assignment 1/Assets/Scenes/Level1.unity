@@ -387,6 +387,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pf_ExplosiveEmemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1576106038947575861, guid: ee8d11ea131c9764b83d7d81eba9a01b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7348205128416877386, guid: ee8d11ea131c9764b83d7d81eba9a01b, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -712,6 +716,10 @@ PrefabInstance:
     - target: {fileID: 1576106038947575861, guid: ee8d11ea131c9764b83d7d81eba9a01b, type: 3}
       propertyPath: m_Name
       value: pf_ExplosiveEmemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576106038947575861, guid: ee8d11ea131c9764b83d7d81eba9a01b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7348205128416877386, guid: ee8d11ea131c9764b83d7d81eba9a01b, type: 3}
       propertyPath: m_RootOrder
@@ -140390,6 +140398,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pf_ExplosiveEmemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1576106038947575861, guid: ee8d11ea131c9764b83d7d81eba9a01b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7348205128416877386, guid: ee8d11ea131c9764b83d7d81eba9a01b, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -141307,6 +141319,10 @@ PrefabInstance:
     - target: {fileID: 7688875315214923536, guid: b7624a5a509949244943d4cfc1c2fe15, type: 3}
       propertyPath: m_Name
       value: pf_LFRHD (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7688875315214923536, guid: b7624a5a509949244943d4cfc1c2fe15, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -142885,7 +142901,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.25
+  m_Radius: 1
 --- !u!1001 &1456941133
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -143651,6 +143667,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pf_LFRHD
       objectReference: {fileID: 0}
+    - target: {fileID: 7688875315214923536, guid: b7624a5a509949244943d4cfc1c2fe15, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -144068,7 +144088,7 @@ GameObject:
   - component: {fileID: 1562206182}
   - component: {fileID: 1562206181}
   m_Layer: 0
-  m_Name: Exit
+  m_Name: SO_Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146690,7 +146710,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.00000011920929, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 1.5
 --- !u!61 &1920360429
 BoxCollider2D:
   m_ObjectHideFlags: 0
